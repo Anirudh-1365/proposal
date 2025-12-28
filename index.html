@@ -12,7 +12,7 @@
 
 body {
     margin: 0;
-    font-family: 'Arial', sans-serif;
+    font-family: Arial, sans-serif;
     height: 100vh;
     background: url("bg.jpg") center/cover no-repeat;
     display: flex;
@@ -20,7 +20,7 @@ body {
     align-items: center;
 }
 
-/* Dark overlay for readability */
+/* Dark overlay for text visibility */
 body::before {
     content: "";
     position: fixed;
@@ -62,8 +62,6 @@ p {
 
 .buttons {
     margin-top: 25px;
-    position: relative;
-    height: 60px;
 }
 
 button {
@@ -72,6 +70,7 @@ button {
     border-radius: 30px;
     border: none;
     cursor: pointer;
+    margin: 10px;
 }
 
 #yesBtn {
@@ -81,15 +80,13 @@ button {
 
 #noBtn {
     background-color: #ddd;
-    position: absolute;
-    left: 120px;
 }
 
 .hidden {
     display: none;
 }
 
-/* ❤️ Pink + Red Heart Confetti */
+/* 💗 Heart Confetti */
 .heart {
     position: fixed;
     top: -10px;
@@ -114,12 +111,13 @@ button {
     <p>
         I’ve been wanting to ask you something for a while…<br><br>
         Not with a ring but website cus we CS majors duh.. 😊<br><br>
-        Will you be my girlfriend? 💕
+        Will you be my girlfriend? 💕 (there's no choice)
+        
     </p>
 
     <div class="buttons">
         <button id="yesBtn" onclick="sayYes()">YES 💖</button>
-        <button id="noBtn" onmouseover="moveNo()">NO 🙈</button>
+        <button id="noBtn" onclick="turnIntoYes()">NO 🙈</button>
     </div>
 
     <div class="signature">
@@ -130,7 +128,7 @@ button {
 <div class="card hidden" id="yesCard">
     <h1>YAY!!! 🎉❤️</h1>
     <p>
-        Thank you my Babyyyy, you just made me the happiest person alive 🥰<br><br>
+        Thank you my Babyyyy, I missed being yourss 🥰<br><br>
         I promise that we will stay together humesha 💕
     </p>
 
@@ -146,11 +144,12 @@ function sayYes() {
     launchHearts();
 }
 
-function moveNo() {
+function turnIntoYes() {
     const noBtn = document.getElementById("noBtn");
-    const x = Math.random() * 200 - 100;
-    const y = Math.random() * 100 - 50;
-    noBtn.style.transform = `translate(${x}px, ${y}px)`;
+    noBtn.innerHTML = "YES 💖";
+    noBtn.style.backgroundColor = "#ff4d6d";
+    noBtn.style.color = "white";
+    noBtn.onclick = sayYes;
 }
 
 function launchHearts() {
